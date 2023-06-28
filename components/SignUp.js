@@ -3,6 +3,7 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 
 import { Button, Checkbox, Form, Input } from 'antd';
 import Verify from './Verify';
+import Link from 'next/link';
 const SignUpForm = () => {
   const onFinish = async(values) => {
     const{email,password}=values
@@ -60,21 +61,13 @@ const SignUpForm = () => {
           placeholder="Password"
         />
       </Form.Item>
-      <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
-        <a className="login-form-forgot" href="">
-          Forgot password
-        </a>
-      </Form.Item>
+     
 
       <Form.Item>
         <Button type="primary" htmlType="submit" className="login-form-button">
-          Log in
+          Sign Up
         </Button>
-        Or <a href="">register now!</a>
+        Or <span style={{}}>Already have an account</span> <Link href="/login">Login</Link>
       </Form.Item>
     </Form>
   );
