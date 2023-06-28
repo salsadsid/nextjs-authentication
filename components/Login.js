@@ -1,11 +1,14 @@
 "use client"
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
+import { loggedIn } from '@redux/authSlice/authSlice';
 import { Button, Checkbox, Form, Input } from 'antd';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { useDispatch } from 'react-redux';
 const LoginForm = () => {
   const router =useRouter()
+  const dispatch=useDispatch()
   const onFinish =async (values) => {
     console.log('Received values of form: ', values);
     const status = await signIn('credentials', {
@@ -14,7 +17,10 @@ const LoginForm = () => {
         password: values.password,
         callbackUrl: "/"
     })
-    if(status.ok) router.push(status.url)
+    if(status.ok) {
+      dispatch(loggedIn(values.email))  
+      router.push(status.url)
+    }
   };
   return (
     <Form
