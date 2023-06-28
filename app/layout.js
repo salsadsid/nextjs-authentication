@@ -7,10 +7,7 @@ import { Col, Row } from 'antd';
 import ProviderSession from '@/components/Provider';
 import { Provider } from "react-redux";
 import store from '@redux/store';
-export const metadata = {
-    title: "Nextjs-Authentication",
-    description: "Basic authentication with nextjs",
-  };
+
 const RootLayout = ({children}) => {
   return (
    <html>
